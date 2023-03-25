@@ -1,0 +1,47 @@
+<h5> LISTADO DE PRODUCTOS </h5>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./socket.io/socket.io.js"></script>
+<link rel="stylesheet" href="css/index.css" />
+<script src="/js/products.js"></script>
+
+<div id="divlist">
+
+  {{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}"><button>Anterior</button></a>
+  {{/if}}
+
+  {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}"><button>Siguiente</button></a>
+  {{/if}}
+  <br />
+  <br />
+
+  {{#each productos}}
+
+    <div class="tarjeta">
+      <span style="font-weight:bold"> code : {{this.code}}</span>
+      categoría :
+      {{this.categoria}}
+      <br />
+      description :
+      {{this.description}}
+      <br />
+      price :
+      {{this.price}}
+      stock :
+      {{this.stock}}
+      <br />
+      <br />
+      <div style="display:inline">
+        Cantidad :
+        <input id="txtcantpedido" type="number" />
+        <button style="background-color:orange">Add carrito</button>
+
+      </div>
+    </div>
+    <br />
+
+  {{/each}}
+
+</div>
